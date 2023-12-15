@@ -68,4 +68,6 @@ void f_pall(stack_t **head, unsigned int count);
 
 void f_pint(stack_t **head, unsigned int count);
 
+void f_pop(stack_t **head, unsigned int count);
+
 #endif /* MONTY_H */
