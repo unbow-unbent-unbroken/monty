@@ -56,24 +56,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void f_push(stack_t **head, unsigned int number);
+void push(stack_t **stack, int value, unsigned int line_number);
 
-void f_pall(stack_t **head, unsigned int number);
-
-void f_pint(stack_t **head, unsigned int number);
-
-void f_push(stack_t **head, unsigned int count);
-
-void f_pall(stack_t **head, unsigned int count);
-
-void f_pint(stack_t **head, unsigned int count);
-
-void f_pop(stack_t **head, unsigned int count);
-
-void f_swap(stack_t **head, unsigned int count);
-
-void f_add(stack_t **head, unsigned int count);
-
-void f_nop(stack_t **head, unsigned int count);
+void pall(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

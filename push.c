@@ -1,39 +1,28 @@
 #include "monty.h"
 
 /**
- * f_push - add node to the stack
- * @head: stack head
- * @count: line_number
- * Return: no return
-*/
+ * push - adds a new node at the beginning of a stack_t list
+ * @stack: double pointer to the head of the stack
+ * @value: integer value to be stored in the new node
+ * @line_number: current line number in the Monty bytecode file
+ */
 
-void f_push(stack_t **head, unsigned int count)
+void push(stack_t **stack, int value, unsigned int line_number)
 {
-	int x, y = 0, flag = 0;
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-	if (bus.arg)
+	if (!new_node)
 	{
-		if (bus.arg[0] == '-')
-			y++;
-		for (; bus.arg[y] != '\0'; y++)
-		{
-			if (bus.arg[y] > 57 || bus.arg[y] < 48)
-				flag = 1; }
-		if (flag == 1)
-		{ fprintf(stderr, "L%d: usage: push integer\n", count);
-			fclose(bus.file);
-			free(bus.content);
-			free_stack(*head);
-			exit(EXIT_FAILURE); }}
-	else
-	{ fprintf(stderr, "L%d: usage: push integer\n", count);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE); }
-	x = atoi(bus.arg);
-	if (bus.lifi == 0)
-		addnode(head, x);
-	else
-		addqueue(head, x);
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+	new_node->n = value;
+	new_node->prev = NULL;
+	new_node->next = *stack;
+
+	if (*stack)
+		(*stack)->prev = new_node;
+
+	*stack = new_node;
 }
