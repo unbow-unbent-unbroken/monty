@@ -9,7 +9,11 @@
 
 void push(stack_t **stack, int value, unsigned int line_number)
 {
-	stack_t *new_node = malloc(sizeof(stack_t));
+	(void)line_number;
+
+	stack_t *new_node;
+
+	new_node = malloc(sizeof(stack_t));
 
 	if (!new_node)
 	{
