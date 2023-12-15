@@ -72,4 +72,6 @@ void f_pop(stack_t **head, unsigned int count);
 
 void f_swap(stack_t **head, unsigned int count);
 
+void f_add(stack_t **head, unsigned int count)
+
 #endif /* MONTY_H */
